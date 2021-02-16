@@ -47,7 +47,7 @@ void LinkedStack<T>::Push(T input)
     }
     else
     {
-        Node<T> oldHead = this->Head;
+        Node<T>* oldHead = this->Head.GetNode();
         Node<T> newHead;
         this->Head.SetValue(input);
         this->Head.SetNode(oldHead);
@@ -65,9 +65,11 @@ T LinkedStack<T>::Pop()
     }
     else
     {
-        Node<T> newHead = this->Head.GetNode();
-        this->Head = this->Head.GetNode();
-        return newHead.GetValue();
+        Node<T>* newHead = this->Head.GetNode();
+        this->Head.SetNode(this->Head.GetNode());
+        T value;
+        value = newHead->GetValue();
+        return value;
     }
 }
 
@@ -80,7 +82,7 @@ T LinkedStack<T>::Peek()
     }
     else
     {
-        return this->Head.value;
+        return this->Head.GetValue();
     }
 }
 
@@ -90,8 +92,8 @@ int main()
 
     ls.Push(1);
     ls.Push(2);
-    ls.Push(3);
-
+    ls.Push(8);
+    cout << ls.Peek();
     cout << ls.Pop();
 }
 

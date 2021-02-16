@@ -8,7 +8,7 @@ class Node
 {
     private:
         T value;
-        Node<T> next;
+        Node<T>* next;
 
     public:
         T GetValue()
@@ -22,12 +22,12 @@ class Node
         }
 
 
-        Node<T> GetNode()
+        Node<T>* GetNode()
         {
             return this->next;
         }
 
-        void SetNode(Node<T> input)
+        void SetNode(Node<T>* input)
         {
             this->next = input;
         }
